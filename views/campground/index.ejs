@@ -1,9 +1,37 @@
 <% layout('layouts/boilerplate') %> 
 
+<!-- Campground Page to show All the campgrund Currently availble -->
+
+<div class="d-flex flex-row my-3">
     <h1>Avaiable Campground </h1>
-    <h3><a href="/campground/new">Add new Campground</a></h3>
-    <ul>
-        <% for(let ithcamp of campground){ %> 
-        <li> <a href="/campground/<%=ithcamp._id %> "> <%= ithcamp.title %> </a>  </li>
+    <h3 class="m-2" ><a class="btn btn-outline-primary" href="/campground/new">Add new Campground</a></h3>
+
+</div>
+
+        <% for(let ithcamp of campground){ %>
+            <div class="card mb-3" style="max-width:985px; max-height: 386px;">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="img-fluid" src="<%= ithcamp.image%>" alt="..." style="max-height: 385px;max-width:210px;">
+                    </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-tittle ">
+                            <%= ithcamp.title %>
+                        </h5>
+                        <p class="card-text">
+                            <%= ithcamp.description%> 
+                        </p>
+                        <p>
+                            <small class="card-text">
+                                <%= ithcamp.location %> 
+                            </small>
+                        </p>
+
+                        <a class="btn btn-primary" href="/campground/<%=ithcamp._id %> ">View Camp</a>
+                    </div>
+                </div>
+                </div>
+
+            </div> 
         <% } %> 
-    </ul>

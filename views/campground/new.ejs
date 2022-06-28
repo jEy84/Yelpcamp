@@ -1,22 +1,70 @@
-<% layout('layouts/boilerplate') %> 
-<div>
+<% layout('layouts/boilerplate') %>
+ <!--form to add new campground   -->
+<div class="row">
 
-    <h3>Enter the Details</h3>
-</div>
-    <form action="/campground" name="campground" method="post">
-        <div>
-            <label for="title">Title: </label>
-            <input type="text" id="title" name="campground[title]">
-        </div>
-        <div>
-            <label for="location">Location</label>
-            <input type="text" id="location" name="campground[location]">
-        </div>
+    <div class="col-6 offset-3">
+        <h3>Enter  Camp the Details</h3>
 
-        <div>
-            <button type="submit">Save camp</button>
+        <form action="/campground" class="no-validateform" name="campground" method="post" novalidate>
+            <!-- For title -->
+            <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" id="title" name="campground[title]" class="form-control"  placeholder="woody"  required>
+          </div>
+          <!-- location -->
+          <div class="mb-3">
+              <label for="location" class="form-label"> Enter Location</label>
+              <input class="form-control" id="location" name="campground[location]" type="text" placeholder="moon" aria-label="moon" required>
+            </div>
+            <!-- to put Img url -->
+            <div class="mb-3">
+            <label class="form-label" for="image">Image Url</label>
+            <input class="form-control" type="text" id="image" name="campground[image]"required>
+        </div>
+        <!-- For Price of Camp -->
+        <div class="mb-3">
+            <label class="form-label" for="price">Campground Price</label>
+            <div class="input-group">
+                <span class="input-group-text" id="price-label">$</span>
+                <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
+                aria-describedby="price-label" name="campground[price]"required>
+            </div>
+        </div>
+        <!-- decription of the camp -->
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea type="email" class="form-control" id="description" name="campground[description]" placeholder="whole new world"required></textarea>
+        </div>
+            <!-- save Camp  -->
+            <div>
+                <button class="btn btn-success" type="submit">Save camp</button>
         </div>
     </form>
-    <div>
-        <h4><a href="/campground">Back to the campground<a></h4>
-    </div>
+    
+            <h4><a class="my-4 btn btn-outline-secondary" href="/campground">Back to the campground<a></h4>
+            </div>
+</div>
+    
+
+        
+<script>
+    
+    (function(){
+        'use strict'
+        //fetch form 
+        const formsEle = document.querySelectorAll('.no-validateform');
+        
+        //loop over the all element and check
+        Array.from(formsEle)
+                .forEach(function(iele){
+                        iele.addEventListener('submit',   
+                            function(event){
+                                if(!iele.checkValidity()){
+                                    event.preventDefault()
+                                    event.stopPropagation()
+                                 }
+                                 iele.classList.add('was-validated')
+                },false)
+            })
+        })()
+</script>

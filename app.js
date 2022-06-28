@@ -48,10 +48,17 @@ app.get('/campground',async(req,resp)=>{
 app.get('/campground/new',async(req,resp)=>{
     resp.render('campground/new');
 })
-app.post('/campground',async(req,resp)=>{
+
+//route err to next where err is handle
+app.post('/campground',async(req,resp,next)=>{
+try{
     const icamp = new Campground(req.body.campground); //acces the form elements
     await icamp.save();
     resp.redirect(`/campground/${icamp._id}`);
+}catch(err){
+    next(err);
+}
+
 })
 
 app.get('/campground/:id',async(req,resp)=>{
@@ -80,6 +87,12 @@ app.delete('/campground/:id',async(req,resp)=>{
     const {id}= req.params;
     await Campground.findByIdAndDelete(id);
     resp.redirect('/campground')
+})
+
+
+//error handling 
+app.use((err,req,resp,next)=>{
+    resp.send("😕Somthing Went Wrong!!!")
 })
 
 app.listen(9090,()=>{
