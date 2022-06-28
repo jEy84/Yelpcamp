@@ -4,17 +4,32 @@
     <h3>Enter the Details</h3>
 </div>
     <form action="/campground" name="campground" method="post">
-        <div>
-            <label for="title">Title: </label>
-            <input type="text" id="title" name="campground[title]">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" id="title" name="campground[title]" class="form-control"  placeholder="woody" aria-label="woody">
+          </div>
+          <div class="mb-3">
+              <label for="location" class="form-label"> Enter Location</label>
+              <input class="form-control" id="location" name="campground[location]" type="text" placeholder="moon" aria-label="moon">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="image">Image Url</label>
+            <input class="form-control" type="text" id="image" name="campground[image]">
         </div>
-        <div>
-            <label for="location">Location</label>
-            <input type="text" id="location" name="campground[location]">
+        <div class="mb-3">
+            <label class="form-label" for="price">Campground Price</label>
+            <div class="input-group">
+                <span class="input-group-text" id="price-label">$</span>
+                <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
+                    aria-describedby="price-label" name="campground[price]">
+            </div>
         </div>
-
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea type="email" class="form-control" id="description" name="campground[description]" placeholder="whole new world"></textarea>
+          </div>
         <div>
-            <button type="submit">Save camp</button>
+            <button class="btn btn-success" type="submit">Save camp</button>
         </div>
     </form>
     <div>
