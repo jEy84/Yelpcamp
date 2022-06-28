@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New campground</title>
-</head>
+<% layout('layouts/boilerplate') %> 
 <body>
     <h3>Enter the Details</h3>
     <form action="/campground" name="campground" method="post">
@@ -19,11 +12,9 @@
         </div>
 
         <div>
-            <button type="submit">submit</button>
+            <button type="submit">Save camp</button>
         </div>
     </form>
     <div>
-        <h4><a href="/campground">All campgrounds</a></h4>
+        <h4><a href="/campground">Back to the campground<a></h4>
     </div>
-</body>
-</html>

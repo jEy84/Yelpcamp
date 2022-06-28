@@ -2,8 +2,12 @@
 const express  = require('express');
 const app = express();
 const path = require('path');
+const morgan = require('morgan');
+const ejsMate = require('ejs-mate');
 const mongoose = require('mongoose');
 const Campground = require('./models/campground.js');
+const methodOverride = require('method-override');
+
 
 mongoose.connect('mongodb://localhost:27017/yelp-camp',{
 });
@@ -15,11 +19,20 @@ db.once('open',()=>{
     console.log("Database Connected: ");
 });
 
+app.engine('ejs',ejsMate);
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
 
+app.use(morgan('dev'));//middleware
+app.use(methodOverride('_method'));
 app.use(express.urlencoded({extended:true}))
 app.use(express.static('public'))
+
+
+// app.use('/',(reqm,resp)=>{
+//     resp.send('Every single request')
+// })
+
 
 app.get('/',(req,resp)=>{
     resp.render('home');
@@ -45,6 +58,28 @@ app.get('/campground/:id',async(req,resp)=>{
     const {id} = req.params;
     const camp = await Campground.findById(id);
     resp.render('campground/show',{camp});
+})
+
+
+app.get('/campground/:id/edit',async(req,resp)=>{
+    const {id} = req.params;
+    const camp = await Campground.findById(id);
+    resp.render('campground/edit',{camp});
+})
+
+
+app.put('/campground/:id',async(req,resp)=>{
+    const {id} = req.params;
+    const camp = await Campground.findByIdAndUpdate(id,{...req.body.campground});
+    resp.redirect(`/campground/${camp._id}`);
+
+
+})
+
+app.delete('/campground/:id',async(req,resp)=>{
+    const {id}= req.params;
+    await Campground.findByIdAndDelete(id);
+    resp.redirect('/campground')
 })
 
 app.listen(9090,()=>{
