@@ -1,0 +1,9 @@
+<% layout('./layouts/boilerplate') %> 
+
+<div class="alert alert-danger">
+    <div class="col">
+        <h3 class="alert-header">  <%=statusCode  %>  <%= err.message %>  </h3>
+        <!-- not use in production next line -->
+        <p class="alert-text"> <%= err.stack%>    </p>
+    </div>
+</div>

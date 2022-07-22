@@ -1,3 +1,4 @@
+// used to create random dataBase and add to MOngoDB
 
 const mongoose = require('mongoose');
 const Campground = require('../models/campground.js');
@@ -40,12 +41,11 @@ seedDB().then(() => {
 
 
 // getting image from the unsplash source
-
 async function getimages() {
     try {
       const response = await axios.get('https://api.unsplash.com/photos/random',{
         params:{
-            client_id:"OL1x8N07y77flhztN-wPcmvKhw0VZSJaiW6vpeRV6ms",
+            // client_id:"OL1x8N07y77flhztN-wPcmvKhw0VZSJaiW6vpeRV6ms", //don't use mine
             collections:"483251"
         }
       });

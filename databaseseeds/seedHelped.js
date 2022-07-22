@@ -1,3 +1,4 @@
+// radom name for camp
 module.exports.descriptors = [
     'Forest',
     'Ancient',

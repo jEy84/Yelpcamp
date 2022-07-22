@@ -1,6 +1,12 @@
 <% layout('layouts/boilerplate') %> 
 
 <!-- Campground Page to show All the campgrund Currently availble -->
+<style>
+.showImg{
+    width: 415px;
+    height: 276px;
+}
+</style>
 
 <div class="d-flex flex-row my-3">
     <h1>Avaiable Campground </h1>
@@ -9,10 +15,10 @@
 </div>
 
         <% for(let ithcamp of campground){ %>
-            <div class="card mb-3" style="max-width:985px; max-height: 386px;">
+            <div class="card mb-3" >
                 <div class="row">
                     <div class="col-md-4">
-                        <img class="img-fluid" src="<%= ithcamp.image%>" alt="..." style="max-height: 385px;max-width:210px;">
+                        <img class="img-fluid showImg" src="<%= ithcamp.image%>" alt="..." >
                     </div>
                 <div class="col-md-8">
                     <div class="card-body">
