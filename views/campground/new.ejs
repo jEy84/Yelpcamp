@@ -10,16 +10,25 @@
             <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input type="text" id="title" name="campground[title]" class="form-control"  placeholder="woody"  required>
+            <div class="valid-feedback">
+                👍
+            </div>
           </div>
           <!-- location -->
           <div class="mb-3">
               <label for="location" class="form-label"> Enter Location</label>
               <input class="form-control" id="location" name="campground[location]" type="text" placeholder="moon" aria-label="moon" required>
+              <div class="valid-feedback">
+                👍
+            </div>
             </div>
             <!-- to put Img url -->
             <div class="mb-3">
             <label class="form-label" for="image">Image Url</label>
             <input class="form-control" type="text" id="image" name="campground[image]"required>
+            <div class="valid-feedback">
+                👍
+            </div>
         </div>
         <!-- For Price of Camp -->
         <div class="mb-3">
@@ -28,6 +37,9 @@
                 <span class="input-group-text" id="price-label">$</span>
                 <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
                 aria-describedby="price-label" name="campground[price]"required>
+            </div>
+            <div class="valid-feedback">
+                👍
             </div>
         </div>
         <!-- decription of the camp -->
@@ -38,6 +50,9 @@
             <!-- save Camp  -->
             <div>
                 <button class="btn btn-success" type="submit">Save camp</button>
+        </div>
+        <div class="valid-feedback">
+            👍
         </div>
     </form>
     

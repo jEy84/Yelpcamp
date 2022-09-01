@@ -1,3 +1,5 @@
+// to validate data and prevent empty submit
+
 const Joi = require('joi');
 
 module.exports.campgroundSchema = Joi.object({
@@ -9,3 +11,11 @@ module.exports.campgroundSchema = Joi.object({
     description: Joi.string().required().min(0).max(1000),
   }).required(),
 });
+
+
+module.exports.reviewSchema = Joi.object({
+  review:Joi.object({
+    rating:Joi.number().required(),
+    body:Joi.string().required()
+  }).required(),
+})

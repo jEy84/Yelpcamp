@@ -1,5 +1,6 @@
 // model for database
 const mongoose = require('mongoose');
+const review = require('./review');
 const Schema  = mongoose.Schema; //just reference
 
 const CampgroundSchema = new Schema({
@@ -16,5 +17,17 @@ const CampgroundSchema = new Schema({
         }
     ]
 });
+
+
+//find which method use on mongoose website 
+CampgroundSchema.post('findOneAndDelete',async function(doc){
+    if(doc){
+        await review.deleteMany({
+            _id:{
+                $in:doc.reviews
+            }
+        })
+    }
+})
 
 module.exports = mongoose.model('Campground',CampgroundSchema); 

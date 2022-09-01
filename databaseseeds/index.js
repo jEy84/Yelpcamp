@@ -45,7 +45,7 @@ async function getimages() {
     try {
       const response = await axios.get('https://api.unsplash.com/photos/random',{
         params:{
-            // client_id:"OL1x8N07y77flhztN-wPcmvKhw0VZSJaiW6vpeRV6ms", //don't use mine
+            client_id:"OL1x8N07y77flhztN-wPcmvKhw0VZSJaiW6vpeRV6ms", //don't use mine
             collections:"483251"
         }
       });
