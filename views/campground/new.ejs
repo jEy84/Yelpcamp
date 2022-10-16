@@ -5,7 +5,7 @@
     <div class="col-6 offset-3">
         <h3>Enter  Camp the Details</h3>
 
-        <form action="/campground" class="no-validateform" name="campground" method="post" novalidate>
+        <form action="/campground" class="novalidated-form" name="campground" method="post" novalidate>
             <!-- For title -->
             <div class="mb-3">
             <label for="title" class="form-label">Title</label>
@@ -58,28 +58,5 @@
     
             <h4><a class="my-4 btn btn-outline-secondary" href="/campground">Back to the campground<a></h4>
             </div>
-</div>
-    
-
-        
-<script>
-    
-    (function(){
-        'use strict'
-        //fetch form 
-        const formsEle = document.querySelectorAll('.no-validateform');
-        
-        //loop over the all element and check
-        Array.from(formsEle)
-                .forEach(function(iele){
-                        iele.addEventListener('submit',   
-                            function(event){
-                                if(!iele.checkValidity()){
-                                    event.preventDefault()
-                                    event.stopPropagation()
-                                 }
-                                 iele.classList.add('was-validated')
-                },false)
-            })
-        })()
-</script>
+            
+        </div>

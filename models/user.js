@@ -9,9 +9,10 @@ const UserSchema = new Schema({
     email:{
         type:String,
         required:true,
-        unique:true
+        unique:true,
+        strictPopulate:false
 
-    }
+    },
 })
 
 UserSchema.plugin(passportLocalMongoose);
